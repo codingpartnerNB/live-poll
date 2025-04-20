@@ -16,7 +16,7 @@ export function SocketProvider({ children }) {
   // Initialize socket connection when component mounts
   useEffect(() => {
     // Create socket connection
-    const socketInstance = io(import.meta.env.PROD ? '/' : 'http://localhost:5000', {
+    const socketInstance = io(import.meta.env.PROD ? '/' : 'https://poll-spark-backend.onrender.com', {
       transports: ['websocket'],
     })
 
