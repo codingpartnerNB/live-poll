@@ -51,7 +51,7 @@ mongoose
 
 // Default route
 app.get('/', (req, res) => {
-  res.send('Live Poll Battle API is running');
+  res.send('Live Poll Spark API is running');
 });
 
 const PORT = process.env.PORT || 5000;
