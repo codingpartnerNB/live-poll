@@ -28,7 +28,7 @@ const PollDetails = () => {
 
   const fetchPoll = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/polls/${id}`);
+      const res = await axios.get(`https://poll-spark-backend.onrender.com/api/polls/${id}`);
       setPoll(res.data);
       setError(null);
     } catch (err) {
@@ -74,7 +74,7 @@ const PollDetails = () => {
     setVotingLoading(true);
     
     try {
-      await axios.post(`http://localhost:5000/api/polls/${id}/vote`, 
+      await axios.post(`https://poll-spark-backend.onrender.com/api/polls/${id}/vote`, 
         { optionId },
         { headers: { Authorization: `Bearer ${user.token}` } }
       );
@@ -116,7 +116,7 @@ const PollDetails = () => {
   const handleDelete = async () => {
     try {
       console.log('Deleting poll with ID:', poll._id); // Debugging line
-      await axios.delete(`http://localhost:5000/api/polls/${poll._id}`, {
+      await axios.delete(`https://poll-spark-backend.onrender.com/api/polls/${poll._id}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       showToast('Poll deleted successfully', 'success');
