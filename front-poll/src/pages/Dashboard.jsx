@@ -33,8 +33,8 @@ const Dashboard = () => {
     
     try {
       const endpoint = activeTab === 'created' 
-        ? 'http://localhost:5000/api/polls/user/created' 
-        : 'http://localhost:5000/api/polls/user/voted'
+        ? 'https://poll-spark-backend.onrender.com/api/polls/user/created' 
+        : 'https://poll-spark-backend.onrender.com/api/polls/user/voted'
       
       const res = await axios.get(endpoint, {
         headers: { Authorization: `Bearer ${user.token}` }
@@ -51,7 +51,7 @@ const Dashboard = () => {
 
   const handleDelete = async (pollId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/polls/${pollId}`, {
+      await axios.delete(`https://poll-spark-backend.onrender.com/api/polls/${pollId}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setPolls((prevPolls) => prevPolls.filter((poll) => poll._id !== pollId));
