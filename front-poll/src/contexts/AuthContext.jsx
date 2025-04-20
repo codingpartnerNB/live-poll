@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
       }
       
       // Get user data with token
-      const res = await axios.get('http://localhost:5000/api/users/profile', {
+      const res = await axios.get('https://poll-spark-backend.onrender.com/api/users/profile', {
         headers: { Authorization: `Bearer ${token}` }
       })
       
@@ -56,7 +56,7 @@ export function AuthProvider({ children }) {
     setError(null)
     
     try {
-      const res = await axios.post('http://localhost:5000/api/users/login', { email, password })
+      const res = await axios.post('https://poll-spark-backend.onrender.com/api/users/login', { email, password })
       
       if (res.data && res.data.token) {
         localStorage.setItem('pollBattleToken', res.data.token)
@@ -78,7 +78,7 @@ export function AuthProvider({ children }) {
     setError(null)
     
     try {
-      const res = await axios.post('http://localhost:5000/api/users/register', { username, email, password })
+      const res = await axios.post('https://poll-spark-backend.onrender.com/api/users/register', { username, email, password })
       
       if (res.data && res.data.token) {
         localStorage.setItem('pollBattleToken', res.data.token)
@@ -106,7 +106,7 @@ export function AuthProvider({ children }) {
       const token = localStorage.getItem('pollBattleToken')
       if (!token) return null
       
-      const res = await axios.get('http://localhost:5000/api/users/stats', {
+      const res = await axios.get('https://poll-spark-backend.onrender.com/api/users/stats', {
         headers: { Authorization: `Bearer ${token}` }
       })
       
