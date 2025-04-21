@@ -11,10 +11,9 @@ import { motion } from 'framer-motion';
 const CreatePoll = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, PORT } = useAuth();
   const { createPoll } = useSocket();
   const { showToast } = useToast();
-  const PORT = import.meta.env.BACKEND_URL;
 
   const handleSubmit = async (pollData) => {
     if (!user) {

@@ -15,7 +15,7 @@ import Modal from 'react-modal'; // Install this library using `npm install reac
 const PollDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, PORT } = useAuth();
   const { socket, joinPoll, submitVote } = useSocket();
   const { showToast } = useToast();
   
@@ -25,7 +25,6 @@ const PollDetails = () => {
   const [votingLoading, setVotingLoading] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const PORT = import.meta.env.BACKEND_URL;
 
   const fetchPoll = async () => {
     try {

@@ -9,7 +9,7 @@ import PollList from '../components/polls/PollList'
 import { motion } from 'framer-motion'
 
 const Dashboard = () => {
-  const { user, getUserStats } = useAuth()
+  const { user, getUserStats, PORT } = useAuth()
   const [activeTab, setActiveTab] = useState('created')
   const [polls, setPolls] = useState([])
   const [loading, setLoading] = useState(true)
@@ -19,8 +19,6 @@ const Dashboard = () => {
     pollsVoted: 0,
     totalVotesReceived: 0
   })
-
-  const PORT = import.meta.env.BACKEND_URL;
 
   const fetchStats = async () => {
     const userStats = await getUserStats()

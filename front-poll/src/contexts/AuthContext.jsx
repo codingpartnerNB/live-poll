@@ -122,6 +122,7 @@ export function AuthProvider({ children }) {
     user,
     loading,
     error,
+    PORT,
     login,
     register,
     logout,
