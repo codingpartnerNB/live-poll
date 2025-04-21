@@ -20,6 +20,8 @@ const Dashboard = () => {
     totalVotesReceived: 0
   })
 
+  const PORT = import.meta.env.PORT;
+
   const fetchStats = async () => {
     const userStats = await getUserStats()
     if (userStats) {
@@ -33,8 +35,8 @@ const Dashboard = () => {
     
     try {
       const endpoint = activeTab === 'created' 
-        ? 'https://poll-spark-backend.onrender.com/api/polls/user/created' 
-        : 'https://poll-spark-backend.onrender.com/api/polls/user/voted'
+        ? `${PORT}/api/polls/user/created` 
+        : `${PORT}/api/polls/user/voted`
       
       const res = await axios.get(endpoint, {
         headers: { Authorization: `Bearer ${user.token}` }
@@ -51,7 +53,7 @@ const Dashboard = () => {
 
   const handleDelete = async (pollId) => {
     try {
-      await axios.delete(`https://poll-spark-backend.onrender.com/api/polls/${pollId}`, {
+      await axios.delete(`${PORT}/api/polls/${pollId}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setPolls((prevPolls) => prevPolls.filter((poll) => poll._id !== pollId));

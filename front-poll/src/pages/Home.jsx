@@ -11,13 +11,14 @@ const Home = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const { user } = useAuth()
+  const PORT = import.meta.env.PORT;
 
   const fetchPolls = async () => {
     setLoading(true)
     setError(null)
     
     try {
-      const res = await axios.get('https://poll-spark-backend.onrender.com/api/polls/active')
+      const res = await axios.get(`${PORT}/api/polls/active`)
       setPolls(res.data)
     } catch (err) {
       setError('Failed to load polls. Please try again later.')

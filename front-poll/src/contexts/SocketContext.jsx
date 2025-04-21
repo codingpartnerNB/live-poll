@@ -12,17 +12,14 @@ export function SocketProvider({ children }) {
   const [socket, setSocket] = useState(null)
   const [connected, setConnected] = useState(false)
   const { user } = useAuth()
+  const PORT = import.meta.env.PORT;
 
   // Initialize socket connection when component mounts
   useEffect(() => {
     // Create socket connection
-    const socketInstance = io('https://poll-spark-backend.onrender.com', {
+    const socketInstance = io(`${PORT}`, {
       transports: ['websocket'],
     })
-
-    // const socketInstance = io(import.meta.env.PROD ? '/' : 'https://poll-spark-backend.onrender.com', {
-    //   transports: ['websocket'],
-    // })
 
     // Set up event listeners
     socketInstance.on('connect', () => {

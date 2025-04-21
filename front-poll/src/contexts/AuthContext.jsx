@@ -11,6 +11,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const PORT = import.meta.env.PORT;
 
   // Check if user is logged in (using token in localStorage)
   const checkAuthStatus = useCallback(async () => {
@@ -26,7 +27,7 @@ export function AuthProvider({ children }) {
       }
       
       // Get user data with token
-      const res = await axios.get('https://poll-spark-backend.onrender.com/api/users/profile', {
+      const res = await axios.get(`${PORT}/api/users/profile`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       
@@ -56,7 +57,7 @@ export function AuthProvider({ children }) {
     setError(null)
     
     try {
-      const res = await axios.post('https://poll-spark-backend.onrender.com/api/users/login', { email, password })
+      const res = await axios.post(`${PORT}/api/users/login`, { email, password })
       
       if (res.data && res.data.token) {
         localStorage.setItem('pollBattleToken', res.data.token)
@@ -78,7 +79,7 @@ export function AuthProvider({ children }) {
     setError(null)
     
     try {
-      const res = await axios.post('https://poll-spark-backend.onrender.com/api/users/register', { username, email, password })
+      const res = await axios.post(`${PORT}/api/users/register`, { username, email, password })
       
       if (res.data && res.data.token) {
         localStorage.setItem('pollBattleToken', res.data.token)
@@ -106,7 +107,7 @@ export function AuthProvider({ children }) {
       const token = localStorage.getItem('pollBattleToken')
       if (!token) return null
       
-      const res = await axios.get('https://poll-spark-backend.onrender.com/api/users/stats', {
+      const res = await axios.get(`${PORT}/api/users/stats`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       

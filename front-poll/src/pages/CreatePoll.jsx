@@ -14,6 +14,7 @@ const CreatePoll = () => {
   const { user } = useAuth();
   const { createPoll } = useSocket();
   const { showToast } = useToast();
+  const PORT = import.meta.env.PORT;
 
   const handleSubmit = async (pollData) => {
     if (!user) {
@@ -24,7 +25,7 @@ const CreatePoll = () => {
     setLoading(true);
     
     try {
-      const res = await axios.post('https://poll-spark-backend.onrender.com/api/polls', 
+      const res = await axios.post(`${PORT}/api/polls`, 
         pollData,
         { headers: { Authorization: `Bearer ${user.token}` } }
       );
