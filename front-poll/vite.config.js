@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
-const PORT = import.meta.env.PORT;
+
 export default defineConfig({
   plugins: [
     tailwindcss(),
@@ -8,12 +8,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/socket.io': {
-        target: PORT,
+        target: 'https://poll-spark-backend.onrender.com',
         ws: true, // Enable WebSocket proxying
         changeOrigin: true,
       },
       '/api': {
-        target: PORT,
+        target: 'https://poll-spark-backend.onrender.com',
         changeOrigin: true,
       },
     },
