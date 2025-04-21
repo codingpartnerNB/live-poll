@@ -1,8 +1,12 @@
 {
-    "rewrites":[
+    "rewrites": [
         {
-            "source":"/(.*)",
-            "destination":"/index.html"
+            "source": "/socket.io/:path*",
+            "destination": "https://poll-spark-backend.onrender.com/socket.io/:path*"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
         }
     ]
 }
