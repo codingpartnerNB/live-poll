@@ -12,7 +12,7 @@ export function SocketProvider({ children }) {
   const [socket, setSocket] = useState(null)
   const [connected, setConnected] = useState(false)
   const { user } = useAuth()
-  const PORT = import.meta.env.BACKEND_URL;
+  const PORT = import.meta.env.BACKEND_URL || 'https://poll-spark-backend.onrender.com';
 
   // Initialize socket connection when component mounts
   useEffect(() => {

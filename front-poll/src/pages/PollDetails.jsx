@@ -15,7 +15,7 @@ import Modal from 'react-modal'; // Install this library using `npm install reac
 const PollDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user, PORT } = useAuth();
+  const { user } = useAuth();
   const { socket, joinPoll, submitVote } = useSocket();
   const { showToast } = useToast();
   
@@ -25,6 +25,8 @@ const PollDetails = () => {
   const [votingLoading, setVotingLoading] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const PORT = import.meta.env.BACKEND_URL || 'https://poll-spark-backend.onrender.com';
 
   const fetchPoll = async () => {
     try {

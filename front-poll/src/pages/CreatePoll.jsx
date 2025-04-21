@@ -11,9 +11,10 @@ import { motion } from 'framer-motion';
 const CreatePoll = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { user, PORT } = useAuth();
+  const { user } = useAuth();
   const { createPoll } = useSocket();
   const { showToast } = useToast();
+  const PORT = import.meta.env.BACKEND_URL || 'https://poll-spark-backend.onrender.com';
 
   const handleSubmit = async (pollData) => {
     if (!user) {

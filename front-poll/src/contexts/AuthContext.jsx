@@ -11,7 +11,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const PORT = import.meta.env.BACKEND_URL;
+  const PORT = import.meta.env.BACKEND_URL || 'https://poll-spark-backend.onrender.com';
 
   // Check if user is logged in (using token in localStorage)
   const checkAuthStatus = useCallback(async () => {
@@ -122,7 +122,6 @@ export function AuthProvider({ children }) {
     user,
     loading,
     error,
-    PORT,
     login,
     register,
     logout,

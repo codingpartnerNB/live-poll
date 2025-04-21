@@ -10,7 +10,8 @@ const Home = () => {
   const [polls, setPolls] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const { user, PORT } = useAuth()
+  const { user } = useAuth()
+  const PORT = import.meta.env.BACKEND_URL || 'https://poll-spark-backend.onrender.com';
 
   const fetchPolls = async () => {
     setLoading(true)
