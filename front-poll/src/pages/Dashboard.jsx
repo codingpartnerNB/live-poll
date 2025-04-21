@@ -20,7 +20,7 @@ const Dashboard = () => {
     totalVotesReceived: 0
   })
 
-  const PORT = import.meta.env.PORT;
+  const PORT = import.meta.env.BACKEND_URL;
 
   const fetchStats = async () => {
     const userStats = await getUserStats()

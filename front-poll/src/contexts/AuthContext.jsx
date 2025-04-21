@@ -11,7 +11,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const PORT = import.meta.env.PORT;
+  const PORT = import.meta.env.BACKEND_URL;
 
   // Check if user is logged in (using token in localStorage)
   const checkAuthStatus = useCallback(async () => {

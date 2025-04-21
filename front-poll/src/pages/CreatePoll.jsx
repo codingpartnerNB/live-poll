@@ -14,7 +14,7 @@ const CreatePoll = () => {
   const { user } = useAuth();
   const { createPoll } = useSocket();
   const { showToast } = useToast();
-  const PORT = import.meta.env.PORT;
+  const PORT = import.meta.env.BACKEND_URL;
 
   const handleSubmit = async (pollData) => {
     if (!user) {

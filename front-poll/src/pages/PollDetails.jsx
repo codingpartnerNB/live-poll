@@ -25,7 +25,7 @@ const PollDetails = () => {
   const [votingLoading, setVotingLoading] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const PORT = import.meta.env.PORT;
+  const PORT = import.meta.env.BACKEND_URL;
 
   const fetchPoll = async () => {
     try {

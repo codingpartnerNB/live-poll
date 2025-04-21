@@ -11,7 +11,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const { user } = useAuth()
-  const PORT = import.meta.env.PORT;
+  const PORT = import.meta.env.BACKEND_URL;
 
   const fetchPolls = async () => {
     setLoading(true)
