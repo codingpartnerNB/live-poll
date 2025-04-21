@@ -8,12 +8,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/socket.io': {
-        target: `${PORT}`,
+        target: PORT,
         ws: true, // Enable WebSocket proxying
         changeOrigin: true,
       },
       '/api': {
-        target: `${PORT}`,
+        target: PORT,
         changeOrigin: true,
       },
     },
